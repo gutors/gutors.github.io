@@ -51,11 +51,17 @@ body {
 }
 
 .logo {
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: var(--primary-color);
+    display: flex;
+    align-items: center;
     order: -1;
     flex-shrink: 0;
+}
+.logo-img {
+    width: 48px;
+    height: 48px;
+    border-radius: 8px;
+    object-fit: cover;
+    display: block;
 }
 
 .nav-links {
@@ -469,5 +475,9 @@ body {
 
     .skills-grid {
         grid-template-columns: repeat(2, 1fr);
+    }
+    .logo-img {
+        width: 40px;
+        height: 40px;
     }
 }

@@ -48,7 +48,7 @@ To customize the portfolio:
 For questions or feedback, reach out via:
 - GitHub: https://github.com/gutors
 - LinkedIn: https://linkedin.com/in/gustavo-schmid-de-jesus
-- Email: [your-email@example.com](mailto:your-email@example.com)
+- Email: [gutors.nomad@gmail.com](mailto:gutors.nomad@gmail.com)
 
 ---
 

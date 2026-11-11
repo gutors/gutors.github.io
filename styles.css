@@ -30,9 +30,16 @@
   /* paper and ink, sampled from the approved comp */
   --paper: #f8f7ea;
   --paper-deep: #f2f0e0;
+  /* The band tone is translucent on purpose. Sections tinted with a solid
+     colour paint over the fixed paper texture and the material vanishes,
+     which is what made the old evidence section look flat next to the rest.
+     A wash lets one continuous sheet show through every band. */
+  --band: rgba(223, 219, 196, 0.42);
   --ink: #141514;
   --ink-soft: #4a4a44;
-  --ink-faint: #73726e;
+  /* Darkened from #73726e so it still clears 4.5:1 on the tinted band as
+     well as on plain paper; the old value read 4.02 on the band. */
+  --ink-faint: #6a6a65;
   --rule: #c9c7bd;
   --rule-strong: #141514;
   --blue: #1f3f8f;
@@ -513,6 +520,18 @@ a { color: inherit; }
   margin-inline: auto;
 }
 
+/* The page is two stocks of paper: the summary sheet above the fold, and the
+   body below it. The tint starts at the fold and runs unbroken to the dark
+   close, so the eye always knows whether it is reading the abstract or the
+   substance. It used to appear only on a late section, which read as a stray
+   patch rather than a division. */
+.record,
+.method,
+.evidence,
+.capabilities {
+  background: var(--band);
+}
+
 .record {
   padding-block: clamp(4rem, 9vw, 9rem) clamp(3rem, 6vw, 6rem);
   border-top: 1px solid var(--rule-strong);
@@ -644,8 +663,7 @@ a { color: inherit; }
 
 .evidence {
   padding-block: clamp(4rem, 8vw, 7rem);
-  border-top: 1px solid var(--rule-strong);
-  background: var(--paper-deep);
+  border-top: 1px solid var(--rule);
 }
 
 .evidence__title,
@@ -766,7 +784,7 @@ a { color: inherit; }
 
 .method {
   padding-block: clamp(4rem, 8vw, 7rem);
-  border-top: 1px solid var(--rule-strong);
+  border-top: 1px solid var(--rule);
 }
 
 .method__intro {
@@ -841,7 +859,7 @@ a { color: inherit; }
 
 .capabilities {
   padding-block: clamp(3.5rem, 7vw, 6rem);
-  border-top: 1px solid var(--rule-strong);
+  border-top: 1px solid var(--rule);
 }
 
 .cap {

@@ -23,10 +23,11 @@ Four roles, each doing one job. Sampled from the approved comp.
 | Token | Value | Role |
 |---|---|---|
 | `--paper` | `#f8f7ea` | The ground. Every surface not deliberately inverted. |
-| `--paper-deep` | `#f2f0e0` | One step down, used only for the evidence section to separate it without a card. |
+| `--paper-deep` | `#f2f0e0` | One step down, used only for the language selector's hover state. |
+| `--band` | `rgba(223, 219, 196, 0.42)` | The body of the report, from the fold to the inverted close. Translucent on purpose: a solid tone would paint over the paper texture and the sheet would lose its material. |
 | `--ink` | `#141514` | All primary type, all rules that carry structure. |
 | `--ink-soft` | `#4a4a44` | Secondary type: captions, role titles, list body. |
-| `--ink-faint` | `#73726e` | Metadata only: dates, stack lists, footnotes at rest. Never body copy. |
+| `--ink-faint` | `#6a6a65` | Metadata only: dates, stack lists, footnotes at rest. Never body copy. Darkened from `#73726e` so it clears 4.5:1 on the band, where the old value read 4.02. |
 | `--rule` | `#c9c7bd` | Hairlines that divide without asserting. |
 | `--rule-strong` | `#141514` | Section boundaries; the ink itself. |
 | `--blue` | `#1f3f8f` | Footnote numerals, list markers, the lit pairing state, link hover. The only "interactive" colour. |
@@ -36,9 +37,20 @@ The inverted close section uses `--ink` as ground with `--paper` as type, so the
 page ends on the same paper it began on, reversed. This is the only place the
 value relationship flips.
 
+The page is two stocks of paper: the summary sheet above the fold, and the
+record below it. The tint starts on the fold's rule and runs unbroken through
+every section to the inverted close, which is what tells the eye whether it is
+reading the abstract or the substance. It is a **wash, not a panel**: because it
+is translucent, the paper grain carries through and the band reads as the same
+sheet seen under different light, not as a card laid on top.
+
 Contrast: `--ink` on `--paper` reads 15.9:1. `--ink-soft` reads 8.4:1.
 `--ink-faint` reads 4.7:1 and is therefore restricted to non-essential metadata.
 `--blue` on `--paper` reads 8.9:1. All pass WCAG AA at every size used.
+
+On the band every tone is one step lower: `--ink` 15.3:1, `--ink-soft` 7.5:1,
+`--blue` 8.1:1, and `--ink-faint` 4.5:1 — still AA, which is why the metadata
+tone is the value it is.
 
 ## Type
 

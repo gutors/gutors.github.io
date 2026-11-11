@@ -24,7 +24,7 @@ Four roles, each doing one job. Sampled from the approved comp.
 |---|---|---|
 | `--paper` | `#f8f7ea` | The ground. Every surface not deliberately inverted. |
 | `--paper-deep` | `#f2f0e0` | One step down, used only for the language selector's hover state. |
-| `--band` | `rgba(223, 219, 196, 0.42)` | The body of the report, from the fold to the inverted close. Translucent on purpose: a solid tone would paint over the paper texture and the sheet would lose its material. |
+| `--band` | `rgba(223, 219, 196, 0.42)` | Every second section, starting with the record. Translucent on purpose: a solid tone would paint over the paper texture and the sheet would lose its material. |
 | `--ink` | `#141514` | All primary type, all rules that carry structure. |
 | `--ink-soft` | `#4a4a44` | Secondary type: captions, role titles, list body. |
 | `--ink-faint` | `#6a6a65` | Metadata only: dates, stack lists, footnotes at rest. Never body copy. Darkened from `#73726e` so it clears 4.5:1 on the band, where the old value read 4.02. |
@@ -37,20 +37,22 @@ The inverted close section uses `--ink` as ground with `--paper` as type, so the
 page ends on the same paper it began on, reversed. This is the only place the
 value relationship flips.
 
-The page is two stocks of paper: the summary sheet above the fold, and the
-record below it. The tint starts on the fold's rule and runs unbroken through
-every section to the inverted close, which is what tells the eye whether it is
-reading the abstract or the substance. It is a **wash, not a panel**: because it
-is translucent, the paper grain carries through and the band reads as the same
-sheet seen under different light, not as a card laid on top.
+The page alternates two stocks of paper the whole way down. The summary sheet
+above the fold is plain; the record is tinted; the method is plain again; the
+evidence is tinted; the capabilities are plain; the close inverts to ink. No two
+neighbouring sections share a ground, so a section can be found by its stock
+before its heading is read. It is a **wash, not a panel**: because the tint is
+translucent, the paper grain carries through and the alternation reads as one
+sheet seen under changing light, not as cards stacked on a page.
 
 Contrast: `--ink` on `--paper` reads 15.9:1. `--ink-soft` reads 8.4:1.
 `--ink-faint` reads 4.7:1 and is therefore restricted to non-essential metadata.
 `--blue` on `--paper` reads 8.9:1. All pass WCAG AA at every size used.
 
-On the band every tone is one step lower: `--ink` 15.3:1, `--ink-soft` 7.5:1,
+On the tint every tone is one step lower: `--ink` 15.3:1, `--ink-soft` 7.5:1,
 `--blue` 8.1:1, and `--ink-faint` 4.5:1 — still AA, which is why the metadata
-tone is the value it is.
+tone is the value it is. Both stocks are therefore safe for the same type, which
+is what allows a section to change ground without changing its typography.
 
 ## Type
 
@@ -100,8 +102,10 @@ and in search. Transitions are limited to `color` and `border-color` at 120–16
 
 ## Component language
 
-- **Rules, not cards.** Every separation is a 1px line. No borders on four sides,
-  no background panels, no shadows.
+- **Rules, not cards.** Every separation inside a section is a 1px line. No
+  borders on four sides, no floating panels, no shadows. A section may change
+  its ground, but only edge to edge and only as a wash — the tint is never a box
+  around content.
 - **Numeral-plus-source.** A figure and its footnote numeral are one object; the
   numeral is decorative to assistive tech and the claim lives in the label.
 - **The register row.** Employer in mono caps, role in Faustina italic, a dotted

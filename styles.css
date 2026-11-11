@@ -520,15 +520,14 @@ a { color: inherit; }
   margin-inline: auto;
 }
 
-/* The page is two stocks of paper: the summary sheet above the fold, and the
-   body below it. The tint starts at the fold and runs unbroken to the dark
-   close, so the eye always knows whether it is reading the abstract or the
-   substance. It used to appear only on a late section, which read as a stray
-   patch rather than a division. */
+/* The page alternates two stocks of paper all the way down: the record on the
+   tint, the method back on plain paper, the evidence on the tint again, the
+   capabilities on paper. Each section therefore reads against its neighbour
+   rather than against the page, which is what lets a reader find a section by
+   its ground instead of by its heading. The alternation is set once here
+   instead of on each section, so the pattern cannot drift apart. */
 .record,
-.method,
-.evidence,
-.capabilities {
+.evidence {
   background: var(--band);
 }
 
@@ -663,7 +662,7 @@ a { color: inherit; }
 
 .evidence {
   padding-block: clamp(4rem, 8vw, 7rem);
-  border-top: 1px solid var(--rule);
+  border-top: 1px solid var(--rule-strong);
 }
 
 .evidence__title,
@@ -784,7 +783,7 @@ a { color: inherit; }
 
 .method {
   padding-block: clamp(4rem, 8vw, 7rem);
-  border-top: 1px solid var(--rule);
+  border-top: 1px solid var(--rule-strong);
 }
 
 .method__intro {
@@ -859,7 +858,7 @@ a { color: inherit; }
 
 .capabilities {
   padding-block: clamp(3.5rem, 7vw, 6rem);
-  border-top: 1px solid var(--rule);
+  border-top: 1px solid var(--rule-strong);
 }
 
 .cap {

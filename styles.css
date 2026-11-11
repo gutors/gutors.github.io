@@ -242,6 +242,9 @@ a { color: inherit; }
 .name {
   flex: 1 1 auto;
   margin: 0;
+  /* This is the document's h1, so it must not inherit the browser's bold:
+     the identity line was set at normal weight when it was a paragraph. */
+  font-weight: 400;
   font-size: 1.36em;
   line-height: 1.25;
   letter-spacing: 0.24em;
@@ -274,11 +277,27 @@ a { color: inherit; }
 /* --- the lead figure ---------------------------------------------------- */
 /* Comp geometry: the figure occupies y 15%–35%, the caption sits below it and
    right-aligned at y 34%–46.5%, its right edge out at 64.4% of the sheet. */
+/* The figures used to stand alone under the masthead, so the first thing a
+   reader met was a number with no statement of what it was measuring. The
+   section now opens with the same kicker the career register uses, which is
+   also the document's first heading — before this, the outline began at
+   "Career register", below the very figures the page leads with. */
+.results__title {
+  left: 2.8%;
+  top: 13.65%;
+  margin: 0;
+  font-size: 0.94em;
+  font-weight: 400;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+}
+
 .lead {
   left: 2.8%;
-  top: 15%;
+  top: 18.3%;
   width: 64.4%;
-  height: 31.5%;
+  height: 31%;
   margin: 0;
   display: block;
 }
@@ -299,16 +318,16 @@ a { color: inherit; }
 
 .lead__cap {
   position: absolute;
-  /* Stops short of the rule. Without this offset the caption's right edge
-     lands exactly on the vertical rule at 67.2%, which reads as text touching
-     a line rather than a column with air beside it. */
-  right: 3%;
-  bottom: 0.35em;
-  width: 37%;
+  /* Sits directly under the figure, left-aligned to it. It used to be pushed
+     to the far right of the block, which left the number with nothing beside
+     it and read as an orphan rather than as a measurement with a caption. */
+  left: 0;
+  top: 9.6em;
+  width: 47%;
   display: block;
-  text-align: right;
-  font-size: 1.1em;
-  line-height: 1.42;
+  text-align: left;
+  font-size: 1.05em;
+  line-height: 1.44;
   letter-spacing: 0.07em;
   text-transform: uppercase;
   color: var(--ink);
@@ -316,9 +335,9 @@ a { color: inherit; }
 .lead__cap span { display: block; }
 .lead__cap span:last-child {
   font-size: 0.78em;
-  color: var(--ink);
+  color: var(--ink-soft);
   letter-spacing: 0.09em;
-  margin-top: 0.15em;
+  margin-top: 0.35em;
 }
 
 /* --- footnote numerals -------------------------------------------------- */
@@ -538,7 +557,7 @@ a { color: inherit; }
 
 .record__head { max-width: 62ch; }
 
-.record h1 {
+.record__title {
   margin: 0 0 1.5rem;
   font-family: var(--display);
   font-weight: 700;
@@ -652,7 +671,7 @@ a { color: inherit; }
   line-height: 1.8;
   letter-spacing: 0.04em;
   color: var(--ink-faint);
-  padding-top: 0.35rem;
+  padding-top: 0.5rem;
   border-top: 1px dotted var(--rule);
 }
 

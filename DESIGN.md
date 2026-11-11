@@ -88,6 +88,16 @@ hairline, entries by `--rule`, with more space above a heading than below it.
 Nothing is boxed. There are no cards anywhere on the page; the dividing rule is
 the only container.
 
+## Outline
+
+One `h1`, on the identity line in the masthead, then `h2` per section and `h3`
+for the items inside one. The headings are ordered the way the eye travels, not
+the way the markup happened to grow: the name is the document's title, and every
+block below it is a section of that document. Before this, the only `h1` sat on
+"What I actually built", halfway down the page, so the outline opened with a
+section and a screen reader reached the career list before anything named the
+page.
+
 ## Motion
 
 One authored moment: the figure↔footnote pairing. Hovering or focusing a figure
@@ -106,6 +116,11 @@ and in search. Transitions are limited to `color` and `border-color` at 120–16
   borders on four sides, no floating panels, no shadows. A section may change
   its ground, but only edge to edge and only as a wash — the tint is never a box
   around content.
+- **Kicker above a block.** A section inside the sheet opens with the same mono
+  caps used by the career register, so the sheet reads as one document with one
+  label grammar rather than a hero followed by a report. The figures above the
+  fold carry one too: they were the only block on the page that arrived with no
+  statement of what it was measuring.
 - **Numeral-plus-source.** A figure and its footnote numeral are one object; the
   numeral is decorative to assistive tech and the claim lives in the label.
 - **The register row.** Employer in mono caps, role in Faustina italic, a dotted

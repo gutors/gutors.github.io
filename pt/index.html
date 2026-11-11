@@ -258,6 +258,42 @@
     </div>
   </section>
 
+  <!-- ============ METHOD: how I work with agents ============ -->
+  <section class="method" aria-labelledby="method-h">
+    <div class="method__inner">
+      <h2 id="method-h" class="method__title">Como trabalho com agentes</h2>
+      <p class="method__intro">
+        Trabalho no Cursor. Eu escrevo a especificação e as provas; agentes escrevem o código;
+        um segundo agente, não o autor, verifica. As regras ficam no repositório,
+        não na minha cabeça.
+      </p>
+
+      <ol class="method__steps">
+        <li class="method__step">
+          <h3 class="method__label">Especificar</h3>
+          <p>Escrevo o plano e as provas que vão confirmá-lo. O agente não começa até eu aprovar esse plano nas minhas palavras.</p>
+        </li>
+        <li class="method__step">
+          <h3 class="method__label">Bloquear</h3>
+          <p>Hooks bloqueiam um pull request sem issue, um merge sem revisão independente e a leitura de segredos. O lint corre em cada edição.</p>
+        </li>
+        <li class="method__step">
+          <h3 class="method__label">Verificar</h3>
+          <p>As provas são testes nomeados, não um auto-check. Um agente novo pontua o trabalho. Quem construiu não julga o próprio resultado.</p>
+        </li>
+      </ol>
+
+      <p class="method__example">
+        Um exemplo público é
+        <a href="https://github.com/gutors/ai-accounting-assistant" target="_blank" rel="noopener">o app de fechamento mensal</a>:
+        <a href="https://github.com/gutors/ai-accounting-assistant/blob/main/AGENTS.md" target="_blank" rel="noopener">como os agentes são instruídos</a>
+        e um
+        <a href="https://paladini.github.io/harness-score/" target="_blank" rel="noopener">harness score L4</a>
+        &mdash; os hooks fecham o ciclo.
+      </p>
+    </div>
+  </section>
+
   <!-- ============ CAPABILITIES ============ -->
   <section class="capabilities" aria-labelledby="cap-h">
     <div class="capabilities__inner">

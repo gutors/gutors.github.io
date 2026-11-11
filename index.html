@@ -257,6 +257,42 @@
     </div>
   </section>
 
+  <!-- ============ METHOD: how I work with agents ============ -->
+  <section class="method" aria-labelledby="method-h">
+    <div class="method__inner">
+      <h2 id="method-h" class="method__title">How I work with agents</h2>
+      <p class="method__intro">
+        I work in Cursor. I write the spec and the checks; agents write the code;
+        a second agent, not the author, verifies. The rules live in the repository,
+        not in my head.
+      </p>
+
+      <ol class="method__steps">
+        <li class="method__step">
+          <h3 class="method__label">Specify</h3>
+          <p>I write the plan and the checks that will prove it. The agent does not start until I approve that plan in my own words.</p>
+        </li>
+        <li class="method__step">
+          <h3 class="method__label">Gate</h3>
+          <p>Hooks stop a pull request without an issue, a merge without an independent review, and a read of secrets. Lint runs on every edit.</p>
+        </li>
+        <li class="method__step">
+          <h3 class="method__label">Verify</h3>
+          <p>Proofs are named tests, not a self-check. A fresh agent scores the work. The person who built it does not judge it.</p>
+        </li>
+      </ol>
+
+      <p class="method__example">
+        One public example is
+        <a href="https://github.com/gutors/ai-accounting-assistant" target="_blank" rel="noopener">the monthly-close app</a>:
+        <a href="https://github.com/gutors/ai-accounting-assistant/blob/main/AGENTS.md" target="_blank" rel="noopener">how agents are instructed</a>,
+        and a
+        <a href="https://paladini.github.io/harness-score/" target="_blank" rel="noopener">harness score of L4</a>
+        &mdash; hooks close the loop.
+      </p>
+    </div>
+  </section>
+
   <!-- ============ CAPABILITIES ============ -->
   <section class="capabilities" aria-labelledby="cap-h">
     <div class="capabilities__inner">

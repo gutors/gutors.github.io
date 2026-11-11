@@ -1,201 +1,284 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gustavo Schmid de Jesus - Software Engineer</title>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Gustavo Schmid de Jesus — Software Engineer</title>
+<meta name="description" content="Senior software engineer. Nine years building city-scale Java and Spring systems, now full stack in TypeScript, Java and Python. Maceió, Brazil.">
+<link rel="preload" href="assets/fonts/saira-extra-condensed-700.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/jetbrains-mono.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/faustina-italic-500.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <!-- Navigation -->
-    <nav class="navbar">
-        <div class="container">
-            <div class="logo">
-                <img src="logo.png" alt="Gustavo Schmid de Jesus" class="logo-img">
-            </div>
-            <ul class="nav-links">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#skills">Skills</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </div>
-    </nav>
 
-    <!-- Hero Section -->
-    <section id="home" class="hero">
-        <div class="container">
-            <div class="hero-content">
-                <h1>Hi, I'm Gustavo Schmid de Jesus</h1>
-                <p class="subtitle">Software Engineer | Full Stack Developer | Open Source Enthusiast</p>
-                <p class="description">
-                    I build systems that have impact and help people. Passionate about learning new technologies 
-                    and working in collaborative teams. Currently based in Maceió, Brazil.
-                </p>
-                <div class="cta-buttons">
-                    <a href="#projects" class="btn btn-primary">View My Work</a>
-                    <a href="#contact" class="btn btn-secondary">Get In Touch</a>
-                </div>
-            </div>
-        </div>
-    </section>
+<a class="skip" href="#record">Skip to the record</a>
 
-    <!-- About Section -->
-    <section id="about" class="about">
-        <div class="container">
-            <h2>About Me</h2>
-            <div class="about-content">
-                <div class="about-text">
-                    <p>
-                        I'm a software engineer with extensive experience building Java applications for the public 
-                        sector in Porto Alegre. My career has been focused on delivering software that helps colleagues 
-                        and citizens save money and improve their daily work.
-                    </p>
-                    <p>
-                        I recently spent 2 years traveling through Southeast Asia, where I had the privilege of working 
-                        with amazing people from diverse backgrounds around the world. This experience taught me the 
-                        immense value of learning from others and understanding different perspectives.
-                    </p>
-                    <p>
-                        I love working in teams, tackling challenging problems, and always exploring new technologies 
-                        to stay at the forefront of the industry.
-                    </p>
-                </div>
-                <div class="about-highlights">
-                    <div class="highlight-item">
-                        <h3>Professional Background</h3>
-                        <p>Former @ Procempa, NSCAD, Mconf</p>
-                    </div>
-                    <div class="highlight-item">
-                        <h3>Location</h3>
-                        <p>Maceió, Alagoas, Brazil</p>
-                    </div>
-                    <div class="highlight-item">
-                        <h3>GitHub</h3>
-                        <p><strong>16</strong> repositories | <strong>43+</strong> contributions YTD</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+<main>
+  <!-- ============ THE SHEET: first viewport ============ -->
+  <div class="sheet-wrap">
+  <section class="sheet" aria-label="Summary record">
 
-    <!-- Skills Section -->
-    <section id="skills" class="skills">
-        <div class="container">
-            <h2>Technical Skills</h2>
-            <div class="skills-grid">
-                <div class="skill-category">
-                    <h3>Languages</h3>
-                    <div class="skill-tags">
-                        <span class="tag">Java</span>
-                        <span class="tag">TypeScript</span>
-                        <span class="tag">JavaScript</span>
-                        <span class="tag">Python</span>
-                    </div>
-                </div>
-                <div class="skill-category">
-                    <h3>Frontend</h3>
-                    <div class="skill-tags">
-                        <span class="tag">Angular</span>
-                        <span class="tag">React</span>
-                        <span class="tag">HTML</span>
-                        <span class="tag">CSS</span>
-                    </div>
-                </div>
-                <div class="skill-category">
-                    <h3>Backend</h3>
-                    <div class="skill-tags">
-                        <span class="tag">Spring Boot</span>
-                        <span class="tag">Node.js</span>
-                        <span class="tag">REST APIs</span>
-                    </div>
-                </div>
-                <div class="skill-category">
-                    <h3>DevOps & Tools</h3>
-                    <div class="skill-tags">
-                        <span class="tag">Kubernetes</span>
-                        <span class="tag">Linux</span>
-                        <span class="tag">Git</span>
-                        <span class="tag">Docker</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+    <div class="masthead">
+      <img class="portrait" src="assets/plates/portrait.png" width="240" height="240"
+           alt="Gustavo Schmid de Jesus">
 
-    <!-- Projects Section -->
-    <section id="projects" class="projects">
-        <div class="container">
-            <h2>Featured Projects</h2>
-            <div class="projects-grid">
-                <div class="project-card">
-                    <h3>NLW Pass In Web React</h3>
-                    <p class="tech">TypeScript | React</p>
-                    <p>A pass-in web application built during NLW (Next Level Week) Unite event.</p>
-                    <a href="https://github.com/gutors/nlw-pass-in-web-react" target="_blank" class="project-link">View on GitHub →</a>
-                </div>
-                <div class="project-card">
-                    <h3>NLW Pass In Node.js</h3>
-                    <p class="tech">TypeScript | Node.js</p>
-                    <p>The backend implementation for the pass-in application, built with Node.js and Express.</p>
-                    <a href="https://github.com/gutors/nlw-pass-in-nodejs" target="_blank" class="project-link">View on GitHub →</a>
-                </div>
-                <div class="project-card">
-                    <h3>NLW Trip Planner AI Agent</h3>
-                    <p class="tech">Python | ChatGPT API</p>
-                    <p>An intelligent AI agent that leverages ChatGPT API to help create and plan future trips.</p>
-                    <a href="https://github.com/gutors/nlw-trip-planner-ai-agent" target="_blank" class="project-link">View on GitHub →</a>
-                </div>
-                <div class="project-card">
-                    <h3>NLW Trip Planner Java</h3>
-                    <p class="tech">Java | Spring Boot</p>
-                    <p>A robust Java backend application for trip planning functionality.</p>
-                    <a href="https://github.com/gutors/nlw-trip-planner-java" target="_blank" class="project-link">View on GitHub →</a>
-                </div>
-                <div class="project-card">
-                    <h3>Angular Essentials</h3>
-                    <p class="tech">Angular | TypeScript</p>
-                    <p>Reference project demonstrating Angular essentials and best practices.</p>
-                    <a href="https://github.com/gutors/angular-essentials" target="_blank" class="project-link">View on GitHub →</a>
-                </div>
-            </div>
-            <div class="projects-footer">
-                <p>View all my projects on <a href="https://github.com/gutors" target="_blank">GitHub</a></p>
-            </div>
-        </div>
-    </section>
+      <p class="name">
+        <span>Gustavo Schmid de Jesus</span>
+        <span class="name__sep" aria-hidden="true">/</span>
+        <span class="name__role">Software Engineer</span>
+      </p>
 
-    <!-- Contact Section -->
-    <section id="contact" class="contact">
-        <div class="container">
-            <h2>Let's Connect</h2>
-            <p class="contact-subtitle">I'm always interested in hearing about new projects and opportunities.</p>
-            <div class="contact-links">
-                <a href="https://github.com/gutors" target="_blank" class="contact-button" title="GitHub">
-                    <i class="fab fa-github"></i>
-                </a>
-                <a href="https://linkedin.com/in/gustavo-schmid-de-jesus" target="_blank" class="contact-button" title="LinkedIn">
-                    <i class="fab fa-linkedin"></i>
-                </a>
-                <a href="mailto:gutors.nomad@gmail.com" class="contact-button" title="Email">
-                    <i class="fas fa-envelope"></i>
-                </a>
-            </div>
-        </div>
-    </section>
+      <p class="stamp" aria-label="Stamp: senior engineer, twelve years experienced">Senior&nbsp;&middot;&nbsp;12&nbsp;yrs</p>
+    </div>
 
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <p>&copy; 2026 Gustavo Schmid de Jesus.<br>Built with <span class="heart">❤️</span> love.</p>
-        </div>
-    </footer>
+    <p class="lead">
+      <span class="lead__fig">US$ 800k<sup class="fn" aria-hidden="true">1</sup></span>
+      <span class="lead__cap">
+        <span>Saved in the first year</span>
+        <span>Pharmaceutical inventory, city health department</span>
+      </span>
+    </p>
 
-    <script src="script.js"></script>
+    <ul class="stats">
+      <li class="stat">
+        <span class="stat__fig">172<sup class="fn" aria-hidden="true">2</sup></span>
+        <span class="stat__label">Health locations</span>
+      </li>
+      <li class="stat">
+        <span class="stat__fig">80%<sup class="fn" aria-hidden="true">3</sup></span>
+        <span class="stat__label">Faster job execution</span>
+      </li>
+      <li class="stat">
+        <span class="stat__fig">70%<sup class="fn" aria-hidden="true">4</sup></span>
+        <span class="stat__label">Lower search latency</span>
+      </li>
+    </ul>
+
+    <h2 class="reg__title">Career register</h2>
+    <ol class="reg">
+      <li class="reg__row">
+        <span class="reg__org">Procempa</span>
+        <span class="reg__role">Senior Software Engineer</span>
+        <span class="reg__dots" aria-hidden="true"></span>
+        <span class="reg__date">2015&ndash;2024</span>
+      </li>
+      <li class="reg__row">
+        <span class="reg__org">GrowthStrategyDigital</span>
+        <span class="reg__role">Founder &amp; Lead Software Engineer</span>
+        <span class="reg__dots" aria-hidden="true"></span>
+        <span class="reg__date">2024&ndash;2025</span>
+      </li>
+      <li class="reg__row">
+        <span class="reg__org">NSCAD Microeletrônica</span>
+        <span class="reg__role">Junior Software Engineer</span>
+        <span class="reg__dots" aria-hidden="true"></span>
+        <span class="reg__date">2012&ndash;2014</span>
+      </li>
+      <li class="reg__row">
+        <span class="reg__org">Mconf</span>
+        <span class="reg__role">Rails Developer</span>
+        <span class="reg__dots" aria-hidden="true"></span>
+        <span class="reg__date">2013</span>
+      </li>
+      <li class="reg__row">
+        <span class="reg__org">UFRGS</span>
+        <span class="reg__role">Research Scientist</span>
+        <span class="reg__dots" aria-hidden="true"></span>
+        <span class="reg__date">2011</span>
+      </li>
+    </ol>
+
+    <div class="notes">
+      <p class="note"><span class="fn">1</span> First-year savings from preventing medication waste and theft, city-wide.</p>
+      <p class="note"><span class="fn">2</span> Health locations running the pharmaceutical inventory system.</p>
+      <p class="note"><span class="fn">3</span> Cross-service calls moved to RabbitMQ; job execution time.</p>
+      <p class="note"><span class="fn">4</span> Native SQL and fetch strategies; search latency for clinical staff.</p>
+    </div>
+
+    <a class="contact" href="mailto:gutors.nomad@gmail.com">gutors.nomad@gmail.com</a>
+  </section>
+  </div>
+
+  <!-- ============ THE RECORD: what the sheet summarises ============ -->
+  <section class="record" id="record" aria-labelledby="record-h">
+    <div class="record__inner">
+
+      <header class="record__head">
+        <h1 id="record-h">What I actually built</h1>
+        <p class="record__intro">
+          Twelve years of software, nine of them inside Porto Alegre's public treasury.
+          Below is the work behind the figures above, written at the level of system and
+          decision. Nothing here is confidential: no client data, no internal names.
+        </p>
+      </header>
+
+      <article class="entry" aria-labelledby="e1">
+        <p class="entry__date">2015 — 2024</p>
+        <h2 class="entry__title" id="e1">Senior Software Engineer<span class="entry__at">Procempa · Porto Alegre</span></h2>
+        <p class="entry__lead">Treasury sector: every system behind the city's public spending. I led the architecture of the pharmaceutical inventory used across 172 health locations, and rewrote how the city's services talk to each other.</p>
+        <ul class="entry__list">
+          <li><strong>Pharmaceutical inventory, 172 locations.</strong> Designed and led the city-wide system that tracks medicine stock across the free public pharmacy network. It saved more than US$ 800k (R$ 4M) in its first year by preventing expiration and theft — the figure at the top of this page.</li>
+          <li><strong>pessoaAPI.</strong> Built the RESTful API that centralised citizen data for more than ten internal systems, cutting duplicated records and unblocking contracts with new business clients.</li>
+          <li><strong>RabbitMQ between services.</strong> Replaced synchronous REST calls with message queues where the bottleneck was coupling, not throughput. Job execution got 80% faster.</li>
+          <li><strong>Query and persistence work.</strong> Native SQL and fetch strategies in Hibernate took search latency down 70% for thousands of daily clinical users.</li>
+          <li><strong>Fiscal reporting, automated.</strong> Replaced manual data entry for BNAFAR and EFD-REINF, returning hundreds of hours a month to more than a hundred colleagues and keeping the city at 100% fiscal compliance.</li>
+          <li><strong>Monolith to microservices.</strong> Co-led the migration, with observability and an Angular frontend that replaced the legacy screens.</li>
+        </ul>
+        <p class="entry__stack">
+          Java 8, 12, 21 · Spring Boot · WildFly · Hibernate · RabbitMQ · Angular · TypeScript · RxJS ·
+          PostgreSQL · Oracle · IBM DB2 · Keycloak · Docker · Jenkins
+        </p>
+      </article>
+
+      <article class="entry" aria-labelledby="e2">
+        <p class="entry__date">2024 — 2025</p>
+        <h2 class="entry__title" id="e2">Founder &amp; Lead Software Engineer<span class="entry__at">GrowthStrategyDigital · Southeast Asia</span></h2>
+        <p class="entry__lead">Two years running a small technical consultancy from the road: one engineer, full stack, shipping products for marketing-led businesses.</p>
+        <ul class="entry__list">
+          <li><strong>An AI-driven SaaS platform, concept to production.</strong> React and TypeScript on Supabase — database design, row-level security, authentication, and edge functions for backend logic.</li>
+          <li><strong>An SDR chatbot.</strong> Built with n8n and EvolutionAPI to qualify leads and answer first-line support, cutting response time for the clients who ran it.</li>
+          <li><strong>Attribution repair.</strong> Moved client tracking server-side through GTM and Stape; Meta CAPI recovered more than 30% of conversion data that had been lost to browser restrictions, and CPA improved 50%.</li>
+          <li><strong>Lead nurturing.</strong> Supabase edge functions wired to Mailgun, moving trial users into paid plans without a human in the loop.</li>
+        </ul>
+        <p class="entry__stack">React · TypeScript · Supabase · n8n · EvolutionAPI · GTM · Stape · Mailgun</p>
+      </article>
+
+      <article class="entry" aria-labelledby="e3">
+        <p class="entry__date">2012 — 2014</p>
+        <h2 class="entry__title" id="e3">Junior Software Engineer<span class="entry__at">NSCAD Microeletrônica · UFRGS</span></h2>
+        <p class="entry__lead">Ruby and Rails inside a chip-design institute, where the people I supported were engineers designing integrated circuits.</p>
+        <ul class="entry__list">
+          <li>Built Redmine plugins that replaced course administration done by hand: attendance, exam delivery, and the approve-or-reject decisions that followed from them.</li>
+          <li>Supported instructors on Linux and Windows so their time went into circuit design rather than operating systems.</li>
+        </ul>
+        <p class="entry__stack">Ruby · Ruby on Rails · Redmine · Linux</p>
+      </article>
+
+      <article class="entry" aria-labelledby="e4">
+        <p class="entry__date">2013</p>
+        <h2 class="entry__title" id="e4">Rails Developer<span class="entry__at">Mconf · Porto Alegre</span></h2>
+        <p class="entry__lead">Six months on Mconf-Web, the platform that governs access to Mconf's web conferencing.</p>
+        <ul class="entry__list">
+          <li>Implemented LDAP authentication, and the switch that lets an installation choose between LDAP and local accounts.</li>
+        </ul>
+      </article>
+
+      <article class="entry" aria-labelledby="e5">
+        <p class="entry__date">2011</p>
+        <h2 class="entry__title" id="e5">Optimization Research Scientist<span class="entry__at">Federal University of Rio Grande do Sul</span></h2>
+        <p class="entry__lead">Four months of C++ on a harder problem than it looks: counting triangles in very large graphs.</p>
+        <ul class="entry__list">
+          <li>Implemented and benchmarked an algorithm that outperformed the existing approach on large graphs — the shape of social networks and the web — making real-time statistics like clustering coefficient and community detection more practical.</li>
+        </ul>
+      </article>
+    </div>
+  </section>
+
+  <!-- ============ EVIDENCE ============ -->
+  <section class="evidence" aria-labelledby="ev-h">
+    <div class="evidence__inner">
+      <h2 id="ev-h" class="evidence__title">Inspect it yourself</h2>
+      <p class="evidence__intro">Public repositories, and the places the record above can be checked.</p>
+
+      <ul class="projects">
+        <li class="project">
+          <h3><a href="https://github.com/gutors/mconf-web" target="_blank" rel="noopener">mconf-web</a></h3>
+          <p>The web application that controls access to the Mconf web conferencing system. Where the LDAP work above lives.</p>
+          <p class="project__meta">Ruby · Rails</p>
+        </li>
+        <li class="project">
+          <h3><a href="https://applua.fengshuitradicional.world" target="_blank" rel="noopener">ajudadoceu<span class="project__ext" aria-hidden="true">&#8599;</span></a></h3>
+          <p>A product of his own, running live: a web app that picks the best dates for an action from the moon and an astrology calendar. React 19, TypeScript and Supabase, with a shadcn and Radix component layer on Tailwind 4.</p>
+          <p class="project__meta">
+            <span>TypeScript · React · Supabase · Tailwind</span>
+            <a href="https://github.com/gutors/ajudadoceu" target="_blank" rel="noopener">Source</a>
+          </p>
+        </li>
+        <li class="project">
+          <h3><a href="https://github.com/gutors/ai-accounting-assistant" target="_blank" rel="noopener">ai-accounting-assistant</a></h3>
+          <p>Monthly close for NGO coordinators: import bank statements, attach the supporting documents, match every payment to one, and assemble the package the accountant receives. Rails 8 with Hotwire, PostgreSQL, Google OIDC, and Drive for the month's archive — server-rendered, one process, no SPA. Built on a domain glossary and platform ADRs.</p>
+          <p class="project__meta">Ruby · Rails 8 · Hotwire · PostgreSQL</p>
+        </li>
+        <li class="project">
+          <h3><a href="https://github.com/gutors/nlw-trip-planner-ai-agent" target="_blank" rel="noopener">nlw-trip-planner-ai-agent</a></h3>
+          <p>An AI agent on the ChatGPT API that turns a destination and a window of days into a plan.</p>
+          <p class="project__meta">Python</p>
+        </li>
+        <li class="project">
+          <h3><a href="https://github.com/gutors/nlw-pass-in-web-react" target="_blank" rel="noopener">nlw-pass-in-web-react</a></h3>
+          <p>Event check-in, frontend. TypeScript and React.</p>
+          <p class="project__meta">TypeScript · React</p>
+        </li>
+        <li class="project">
+          <h3><a href="https://github.com/gutors/nlw-pass-in-nodejs" target="_blank" rel="noopener">nlw-pass-in-nodejs</a></h3>
+          <p>The backend for the check-in app: Node.js, Express, and the data model behind it.</p>
+          <p class="project__meta">TypeScript · Node.js</p>
+        </li>
+      </ul>
+
+      <p class="evidence__more">
+        <a href="https://github.com/gutors" target="_blank" rel="noopener">All repositories on GitHub</a>
+      </p>
+    </div>
+  </section>
+
+  <!-- ============ CAPABILITIES ============ -->
+  <section class="capabilities" aria-labelledby="cap-h">
+    <div class="capabilities__inner">
+      <h2 id="cap-h" class="capabilities__title">What I work in</h2>
+      <dl class="cap">
+        <div class="cap__group">
+          <dt>Languages</dt>
+          <dd>Java · TypeScript · JavaScript · Python · Ruby · SQL · C++</dd>
+        </div>
+        <div class="cap__group">
+          <dt>Backend</dt>
+          <dd>Spring Boot · Node.js · Rails · REST · RabbitMQ · Keycloak · SOAP · XML signing</dd>
+        </div>
+        <div class="cap__group">
+          <dt>Frontend</dt>
+          <dd>Angular · React · RxJS · HTML · CSS</dd>
+        </div>
+        <div class="cap__group">
+          <dt>Data</dt>
+          <dd>PostgreSQL · Oracle · IBM DB2 · Hibernate · native SQL</dd>
+        </div>
+        <div class="cap__group">
+          <dt>Platform</dt>
+          <dd>Docker · Kubernetes · Linux · Jenkins · Git · WildFly</dd>
+        </div>
+        <div class="cap__group">
+          <dt>Practice</dt>
+          <dd>Domain-Driven Design · event-driven design · microservices migration · JUnit</dd>
+        </div>
+      </dl>
+    </div>
+  </section>
+
+  <!-- ============ CONTACT ============ -->
+  <section class="close" aria-labelledby="close-h">
+    <div class="close__inner">
+      <h2 id="close-h" class="close__title">Hiring for a senior engineer?</h2>
+      <p class="close__body">
+        I'm in Maceió, Brazil, and I work in English, Portuguese and Spanish.
+        If the problem is systems that have to hold up under real institutional load,
+        that is the work I have done for nine years.
+      </p>
+      <ul class="close__links">
+        <li><a class="close__primary" href="mailto:gutors.nomad@gmail.com">gutors.nomad@gmail.com</a></li>
+        <li><a href="https://github.com/gutors" target="_blank" rel="noopener">GitHub</a></li>
+        <li><a href="https://linkedin.com/in/gustavo-schmid-de-jesus" target="_blank" rel="noopener">LinkedIn</a></li>
+      </ul>
+    </div>
+  </section>
+</main>
+
+<footer class="foot">
+  <p>Gustavo Schmid de Jesus · Maceió, Alagoas, Brazil · <span class="foot__year">2026</span></p>
+  <p class="foot__note">Figures as reported by the city health department and my own measurement; the roles and dates are from my LinkedIn record.</p>
+</footer>
+
+<script src="script.js"></script>
 </body>
 </html>

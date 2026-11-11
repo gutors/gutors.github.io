@@ -1,55 +1,43 @@
-// Smooth scrolling for navigation links
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-            target.scrollIntoView({
-                behavior: 'smooth',
-                block: 'start'
-            });
-        }
-    });
-});
+/* Technical record — interaction
 
-// Active navigation highlighting
-window.addEventListener('scroll', () => {
-    const sections = document.querySelectorAll('section');
-    const navLinks = document.querySelectorAll('.nav-links a');
+   Everything is visible without JavaScript. The only scripted behaviour is
+   the figure↔footnote pairing, which is an enhancement on top of a page that
+   reads perfectly as static type.
 
-    let current = '';
-    sections.forEach(section => {
-        const sectionTop = section.offsetTop;
-        const sectionHeight = section.clientHeight;
-        if (pageYOffset >= sectionTop - 200) {
-            current = section.getAttribute('id');
-        }
-    });
+   Motion is CSS-only and scroll-driven, so nothing is ever hidden waiting for
+   an observer that might not fire (a print, a full-page capture, a crawler).
+*/
 
-    navLinks.forEach(link => {
-        link.classList.remove('active');
-        if (link.getAttribute('href').slice(1) === current) {
-            link.classList.add('active');
-        }
-    });
-});
+(function () {
+  'use strict';
 
-// Add fade-in animation to elements on scroll
-const observerOptions = {
-    threshold: 0.1,
-    rootMargin: '0px 0px -100px 0px'
-};
+  var notes = Array.prototype.slice.call(document.querySelectorAll('.note'));
 
-const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.classList.add('fade-in');
-            observer.unobserve(entry.target);
-        }
-    });
-}, observerOptions);
+  document.querySelectorAll('.lead__fig, .stat__fig').forEach(function (fig) {
+    var num = fig.querySelector('.fn');
+    if (!num) return;
 
-// Observe all project cards and other elements
-document.querySelectorAll('.project-card, .skill-category, .highlight-item').forEach(el => {
-    observer.observe(el);
-});
+    var idx = parseInt(num.textContent, 10) - 1;
+    var note = notes[idx];
+    if (!note) return;
+
+    var claim = note.textContent.replace(/^\s*\d+\s*/, '').trim();
+
+    /* Make the pairing available to keyboard and screen-reader users too.
+       The numeral itself stays decorative (aria-hidden) so the figure reads
+       as a number, not as "800k one". */
+    fig.setAttribute('tabindex', '0');
+    fig.setAttribute('role', 'img');
+    fig.setAttribute('aria-label',
+      fig.textContent.replace(/\s+/g, ' ').replace(/\s*\d\s*$/, '').trim() +
+      '. ' + claim);
+
+    var on = function () { note.classList.add('is-lit'); };
+    var off = function () { note.classList.remove('is-lit'); };
+
+    fig.addEventListener('pointerenter', on);
+    fig.addEventListener('pointerleave', off);
+    fig.addEventListener('focus', on);
+    fig.addEventListener('blur', off);
+  });
+})();

@@ -109,45 +109,76 @@ a { color: inherit; }
    A page-level control, not part of the sheet: the measured card is a printed
    object, and a UI control sitting inside it would be the browser talking
    through the report. It sits above the sheet, quiet, and reads as chrome.
+
+   Each option is a real 44px touch target. The first draft styled the labels
+   as bare text at 17×20px, which is a third of the minimum and, on the
+   Portuguese page, put the only tappable one on the left of the pair where
+   nobody looks for it.
    ========================================================================== */
 
 .langbar {
   max-width: 1280px;
   margin-inline: auto;
-  padding: clamp(0.85rem, 1.8vw, 1.25rem) clamp(1.1rem, 2.6vw, 1.9rem) 0;
+  padding: clamp(0.6rem, 1.6vw, 1rem) clamp(0.9rem, 2.4vw, 1.9rem) 0;
   display: flex;
   justify-content: flex-end;
-  align-items: baseline;
-  gap: 0.55em;
-  font-size: 0.7rem;
-  letter-spacing: 0.16em;
+}
+
+.langbar__group {
+  display: inline-flex;
+  align-items: stretch;
+  border: 1px solid var(--rule);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.langbar__group > * {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* 44×44 is the floor for a thumb; the label only needs its width to fit. */
+  min-width: 46px;
+  min-height: 34px;
+  padding: 0 0.85em;
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
-}
-
-.langbar a,
-.langbar [aria-current] {
   text-decoration: none;
-  padding-bottom: 0.2em;
-  border-bottom: 1px solid transparent;
-  transition: color 140ms ease, border-color 140ms ease;
+  line-height: 1;
+  transition: background 140ms ease, color 140ms ease;
 }
 
-.langbar [aria-current] {
-  color: var(--ink);
-  border-bottom-color: var(--ink);
+.langbar__group [aria-current] {
+  background: var(--ink);
+  color: var(--paper);
+  font-weight: 500;
 }
 
-.langbar a {
-  color: var(--ink-faint);
+.langbar__group a {
+  color: var(--ink-soft);
+  background: transparent;
 }
-.langbar a:hover {
+.langbar__group a:hover {
+  background: var(--paper-deep);
   color: var(--blue);
-  border-bottom-color: var(--blue);
 }
 
-.langbar__sep {
-  color: var(--rule);
-  user-select: none;
+/* A visible divider between the two, so the pair reads as two buttons and
+   never as one label split by a slash. */
+.langbar__group > * + * {
+  border-left: 1px solid var(--rule);
+}
+
+/* Bigger targets where the finger is the pointer. */
+@media (max-width: 900px) {
+  .langbar {
+    padding-top: 0.7rem;
+  }
+  .langbar__group > * {
+    min-width: 56px;
+    min-height: 44px;
+    font-size: 0.8rem;
+  }
 }
 
 /* ==========================================================================

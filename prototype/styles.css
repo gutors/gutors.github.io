@@ -1,0 +1,965 @@
+/* ==========================================================================
+   Gustavo Schmid de Jesus — technical record
+   The world: a printed engineering report. Warm paper, hairline rules,
+   tabular figures, monospaced annotations. Nothing rounded, nothing shadowed.
+   ========================================================================== */
+
+@font-face {
+  font-family: 'Saira Extra Condensed';
+  src: url('../assets/fonts/saira-extra-condensed-700.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'JetBrains Mono';
+  src: url('../assets/fonts/jetbrains-mono.woff2') format('woff2');
+  font-weight: 400 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Faustina';
+  src: url('../assets/fonts/faustina-italic-500.woff2') format('woff2');
+  font-weight: 500;
+  font-style: italic;
+  font-display: swap;
+}
+
+:root {
+  /* paper and ink, sampled from the approved comp */
+  --paper: #f8f7ea;
+  --paper-deep: #f2f0e0;
+  --ink: #141514;
+  --ink-soft: #4a4a44;
+  --ink-faint: #73726e;
+  --rule: #c9c7bd;
+  --rule-strong: #141514;
+  --blue: #1f3f8f;
+  --red: #a21715;
+
+  --mono: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+  --display: 'Saira Extra Condensed', 'Arial Narrow', sans-serif;
+  --serif: 'Faustina', Georgia, serif;
+
+  --pad: clamp(1.25rem, 3.2vw, 3rem);
+}
+
+* { box-sizing: border-box; }
+
+html {
+  -webkit-text-size-adjust: 100%;
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--mono);
+  font-size: 15px;
+  line-height: 1.5;
+  font-variant-numeric: tabular-nums;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* The paper itself: a real texture, tiled, at low strength so text stays crisp. */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background-image: url('../assets/plates/ground.png');
+  background-size: 600px;
+  opacity: 0.55;
+  pointer-events: none;
+  z-index: 0;
+}
+
+main { position: relative; z-index: 1; }
+
+a { color: inherit; }
+
+::selection {
+  background: var(--blue);
+  color: var(--paper);
+}
+
+:focus-visible {
+  outline: 2px solid var(--blue);
+  outline-offset: 3px;
+}
+
+.skip {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  background: var(--ink);
+  color: var(--paper);
+  padding: 0.75rem 1rem;
+  font: 500 13px/1 var(--mono);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  z-index: 100;
+}
+.skip:focus { left: 0; }
+
+/* ==========================================================================
+   First viewport — bound to the approved comp's measured boxes (1280 × 720)
+   ========================================================================== */
+
+/* Wrapper exists so the sheet can size its type from its own width (cqw),
+   which is what makes the measured comp scale exactly at any viewport. */
+.sheet-wrap {
+  container-type: inline-size;
+  max-width: 1280px;
+  margin-inline: auto;
+}
+
+.sheet {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1280 / 720;
+  /* 15px at the comp's 1280 width: one em is one step of the comp's scale. */
+  font-size: 1.171875cqw;
+  overflow: hidden;
+}
+
+.sheet > * {
+  position: absolute;
+}
+
+/* --- masthead: portrait, name and stamp share one band ------------------ */
+/* Measured against the comp: the band closes at 11% of the sheet height, so the
+   lead figure at 15% always has clear air under it. Portrait, name and stamp are
+   one object here — they were absolute siblings before, and the portrait's box
+   grew into the figure's. */
+.masthead {
+  left: 2.8%;
+  top: 2.6%;
+  width: 94.4%;
+  height: 9%;
+  display: flex;
+  align-items: center;
+  gap: 1.1em;
+}
+
+.portrait {
+  flex: 0 0 auto;
+  width: 3.4em;
+  height: 3.4em;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  display: block;
+  object-fit: cover;
+}
+
+/* --- name line ---------------------------------------------------------- */
+.name {
+  flex: 1 1 auto;
+  margin: 0;
+  font-size: 1.36em;
+  line-height: 1.25;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--ink);
+  white-space: nowrap;
+}
+.name__sep { color: var(--ink-soft); margin-inline: 0.3em; }
+.name__role { color: var(--ink); }
+
+/* --- stamp -------------------------------------------------------------- */
+.stamp {
+  flex: 0 0 auto;
+  margin: 0 0.4em 0 0;
+  padding: 0.42em 0.75em 0.36em;
+  border: 0.28em solid var(--red);
+  border-radius: 0.2em;
+  color: var(--red);
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: 1.5em;
+  line-height: 1;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  transform: rotate(-3.5deg);
+  opacity: 0.92;
+}
+
+/* --- the lead figure ---------------------------------------------------- */
+/* Comp geometry: the figure occupies y 15%–35%, the caption sits below it and
+   right-aligned at y 34%–46.5%, its right edge out at 64.4% of the sheet. */
+.lead {
+  left: 2.8%;
+  top: 15%;
+  width: 64.4%;
+  height: 31.5%;
+  margin: 0;
+  display: block;
+}
+
+.lead__fig {
+  position: absolute;
+  left: 0;
+  top: 0;
+  display: block;
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: 11.6em;
+  line-height: 0.78;
+  letter-spacing: -0.012em;
+  color: var(--ink);
+  white-space: nowrap;
+}
+
+.lead__cap {
+  position: absolute;
+  right: 0;
+  bottom: 0.35em;
+  width: 37%;
+  display: block;
+  text-align: right;
+  font-size: 1.1em;
+  line-height: 1.42;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--ink);
+}
+.lead__cap span { display: block; }
+.lead__cap span:last-child {
+  font-size: 0.78em;
+  color: var(--ink);
+  letter-spacing: 0.09em;
+  margin-top: 0.15em;
+}
+
+/* --- footnote numerals -------------------------------------------------- */
+.fn {
+  font-family: var(--mono);
+  font-size: 0.45em;
+  font-weight: 500;
+  color: var(--blue);
+  vertical-align: super;
+  letter-spacing: 0;
+  margin-left: 0.06em;
+}
+
+/* --- the three supporting figures --------------------------------------- */
+.stats {
+  left: 67.2%;
+  top: 12.5%;
+  width: 29.8%;
+  margin: 0;
+  padding: 0 0 0 2.4%;
+  list-style: none;
+  display: grid;
+  grid-auto-rows: 1fr;
+  gap: 1.6%;
+  border-left: 1px solid var(--ink);
+}
+
+.stat {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding-bottom: 0.8em;
+  border-bottom: 1px solid var(--rule);
+}
+.stat:last-child { border-bottom: 0; }
+
+.stat__fig {
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: 4.1em;
+  line-height: 0.85;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+}
+.stat__label {
+  margin-top: 0.5em;
+  font-size: 0.78em;
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+  color: var(--ink);
+}
+
+/* --- career register ---------------------------------------------------- */
+.reg__title {
+  left: 3%;
+  top: 54.8%;
+  margin: 0;
+  font-size: 0.94em;
+  font-weight: 400;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+}
+
+.reg {
+  position: absolute;
+  left: 2.8%;
+  top: 58.6%;
+  width: 92.4%;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.reg__row {
+  position: static;
+  display: grid;
+  grid-template-columns: auto auto 1fr auto;
+  align-items: baseline;
+  column-gap: 0.65em;
+  font-size: 1.02em;
+  line-height: 1.35;
+  padding-block: 0.52em;
+  border-bottom: 1px solid var(--rule);
+}
+.reg__row:first-child { border-top: 1px solid var(--rule); }
+
+.reg__org {
+  font-weight: 500;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--ink);
+}
+.reg__role {
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 500;
+  font-size: 1.08em;
+  color: var(--ink-soft);
+}
+.reg__dots {
+  align-self: end;
+  height: 0.34em;
+  background-image: radial-gradient(circle, var(--rule) 1px, transparent 1px);
+  background-size: 0.42em 0.42em;
+  background-position: 0 bottom;
+  background-repeat: repeat-x;
+  transform: translateY(-0.14em);
+}
+.reg__date {
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.04em;
+  color: var(--ink);
+}
+
+/* --- footnotes ---------------------------------------------------------- */
+.notes {
+  left: 2.8%;
+  top: 86%;
+  width: 89%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.5em 2.2em;
+  margin: 0;
+}
+.note {
+  margin: 0;
+  display: grid;
+  grid-template-columns: 1.3em 1fr;
+  font-size: 0.92em;
+  line-height: 1.45;
+  letter-spacing: 0.02em;
+  color: var(--ink-soft);
+  transition: color 160ms ease;
+}
+.note .fn {
+  font-size: 1em;
+  vertical-align: baseline;
+  margin: 0;
+}
+
+/* lit state: the pairing the comp promises but a print sheet cannot do */
+.note.is-lit {
+  color: var(--ink);
+}
+.note.is-lit .fn {
+  background: var(--blue);
+  color: var(--paper);
+  border-radius: 1px;
+  box-shadow: 0 0 0 2px var(--blue);
+  transition: background 120ms ease, color 120ms ease;
+}
+.lead__fig, .stat__fig {
+  outline: none;
+}
+.lead__fig:focus-visible,
+.stat__fig:focus-visible {
+  outline: 2px solid var(--blue);
+  outline-offset: 6px;
+}
+
+/* --- contact ------------------------------------------------------------ */
+.contact {
+  left: 78%;
+  top: 94%;
+  width: 19%;
+  text-align: right;
+  font-size: 0.98em;
+  letter-spacing: 0.06em;
+  color: var(--ink);
+  text-decoration: none;
+  text-underline-offset: 0.25em;
+  text-decoration-thickness: 1px;
+}
+.contact:hover {
+  color: var(--blue);
+  text-decoration: underline;
+}
+
+/* ==========================================================================
+   The record — everything below the fold, same world, fluid
+   ========================================================================== */
+
+.record,
+.evidence,
+.capabilities,
+.close {
+  position: relative;
+  padding-inline: var(--pad);
+}
+
+.record__inner,
+.evidence__inner,
+.capabilities__inner,
+.close__inner {
+  max-width: 74rem;
+  margin-inline: auto;
+}
+
+.record {
+  padding-block: clamp(4rem, 9vw, 9rem) clamp(3rem, 6vw, 6rem);
+  border-top: 1px solid var(--rule-strong);
+}
+
+.record__head { max-width: 62ch; }
+
+.record h1 {
+  margin: 0 0 1.5rem;
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: clamp(2.75rem, 6.5vw, 5.5rem);
+  line-height: 0.92;
+  letter-spacing: -0.005em;
+  text-wrap: balance;
+}
+
+.record__intro {
+  margin: 0 0 clamp(3rem, 6vw, 5rem);
+  font-size: 1rem;
+  line-height: 1.75;
+  color: var(--ink-soft);
+  max-width: 58ch;
+}
+
+/* --- one entry per role ------------------------------------------------- */
+.entry {
+  display: grid;
+  grid-template-columns: 10.5rem minmax(0, 1fr);
+  column-gap: clamp(1.5rem, 4vw, 4rem);
+  padding-block: clamp(2rem, 3.5vw, 3rem);
+  border-top: 1px solid var(--rule);
+}
+.entry:first-of-type { border-top: 1px solid var(--rule-strong); }
+
+/* The date holds the left column for the whole entry; everything else
+   stacks in the content column beside it. */
+.entry > *:not(.entry__date) { grid-column: 2; }
+
+.entry__date {
+  grid-column: 1;
+  grid-row: 1 / -1;
+  margin: 0;
+  font-size: 0.8rem;
+  letter-spacing: 0.14em;
+  color: var(--ink-faint);
+  font-variant-numeric: tabular-nums;
+  padding-top: 0.55rem;
+}
+
+.entry__title {
+  margin: 0 0 0.9rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  column-gap: 0.85rem;
+  row-gap: 0.15rem;
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: clamp(1.9rem, 3.4vw, 2.9rem);
+  line-height: 0.95;
+  letter-spacing: -0.005em;
+}
+
+.entry__at {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  font-weight: 400;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+}
+
+.entry__lead {
+  margin: 0 0 1.5rem;
+  max-width: 62ch;
+  font-size: 1rem;
+  line-height: 1.7;
+  color: var(--ink);
+}
+
+.entry__list {
+  margin: 0 0 1.5rem;
+  padding: 0;
+  list-style: none;
+  max-width: 68ch;
+  display: grid;
+  gap: 0.85rem;
+}
+
+.entry__list li {
+  position: relative;
+  padding-left: 1.6rem;
+  font-size: 0.94rem;
+  line-height: 1.68;
+  color: var(--ink-soft);
+}
+
+.entry__list li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.78em;
+  width: 0.75rem;
+  height: 1px;
+  background: var(--blue);
+}
+
+.entry__list strong {
+  font-weight: 500;
+  color: var(--ink);
+}
+
+.entry__stack {
+  margin: 0;
+  grid-column: 2;
+  max-width: 68ch;
+  font-size: 0.78rem;
+  line-height: 1.8;
+  letter-spacing: 0.04em;
+  color: var(--ink-faint);
+  padding-top: 0.35rem;
+  border-top: 1px dotted var(--rule);
+}
+
+/* ==========================================================================
+   Evidence
+   ========================================================================== */
+
+.evidence {
+  padding-block: clamp(4rem, 8vw, 7rem);
+  border-top: 1px solid var(--rule-strong);
+  background: var(--paper-deep);
+}
+
+.evidence__title,
+.capabilities__title {
+  margin: 0 0 0.75rem;
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: clamp(2.1rem, 4.5vw, 3.6rem);
+  line-height: 0.94;
+  letter-spacing: -0.005em;
+}
+
+.evidence__intro {
+  margin: 0 0 clamp(2.5rem, 5vw, 4rem);
+  font-size: 0.95rem;
+  color: var(--ink-soft);
+  max-width: 54ch;
+}
+
+.projects {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(19rem, 1fr));
+  gap: 0;
+  border-top: 1px solid var(--rule);
+}
+
+.project {
+  padding: 1.85rem 1.75rem 1.85rem 0;
+  border-bottom: 1px solid var(--rule);
+}
+.project:not(:nth-child(2n)) { padding-right: clamp(1rem, 3vw, 2.5rem); }
+
+.project h3 {
+  margin: 0 0 0.6rem;
+  font-family: var(--mono);
+  font-size: 0.92rem;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+}
+
+.project h3 a {
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color 160ms ease, color 160ms ease;
+}
+.project h3 a:hover {
+  color: var(--blue);
+  border-bottom-color: var(--blue);
+}
+
+.project p {
+  margin: 0 0 0.9rem;
+  font-size: 0.87rem;
+  line-height: 1.65;
+  color: var(--ink-soft);
+  max-width: 46ch;
+}
+
+.project__meta {
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.4rem 0.9rem;
+  font-size: 0.72rem;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+}
+
+/* A card whose product is live earns a second destination: the running app
+   leads, the source sits beside the stack as the supporting evidence. */
+.project__meta a {
+  color: var(--ink);
+  text-decoration: none;
+  border-bottom: 1px solid var(--rule);
+  padding-bottom: 0.1em;
+  letter-spacing: 0.13em;
+  transition: color 140ms ease, border-color 140ms ease;
+}
+.project__meta a:hover {
+  color: var(--blue);
+  border-bottom-color: var(--blue);
+}
+
+/* The arrow is the one mark that says "leaves this page". */
+.project__ext {
+  font-family: var(--mono);
+  font-size: 0.72em;
+  margin-left: 0.22em;
+  color: var(--ink-faint);
+  vertical-align: 0.28em;
+  transition: color 140ms ease;
+}
+.project h3 a:hover .project__ext { color: var(--blue); }
+
+.evidence__more {
+  margin: clamp(2rem, 4vw, 3rem) 0 0;
+  font-size: 0.85rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+.evidence__more a {
+  text-decoration: none;
+  border-bottom: 1px solid var(--ink);
+  padding-bottom: 0.15em;
+}
+.evidence__more a:hover { color: var(--blue); border-bottom-color: var(--blue); }
+
+/* ==========================================================================
+   Capabilities
+   ========================================================================== */
+
+.capabilities {
+  padding-block: clamp(3.5rem, 7vw, 6rem);
+  border-top: 1px solid var(--rule-strong);
+}
+
+.cap {
+  margin: clamp(2rem, 4vw, 3rem) 0 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+  gap: 0;
+  border-top: 1px solid var(--rule);
+}
+
+.cap__group {
+  padding: 1.35rem 1.6rem 1.35rem 0;
+  border-bottom: 1px solid var(--rule);
+}
+
+.cap dt {
+  font-size: 0.72rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  margin-bottom: 0.6rem;
+}
+
+.cap dd {
+  margin: 0;
+  font-size: 0.9rem;
+  line-height: 1.72;
+  color: var(--ink);
+}
+
+/* ==========================================================================
+   Close
+   ========================================================================== */
+
+.close {
+  padding-block: clamp(4rem, 8vw, 7rem);
+  border-top: 1px solid var(--rule-strong);
+  background: var(--ink);
+  color: var(--paper);
+}
+
+.close__inner { max-width: 74rem; }
+
+.close__title {
+  margin: 0 0 1.4rem;
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: clamp(2.4rem, 6vw, 4.8rem);
+  line-height: 0.94;
+  letter-spacing: -0.005em;
+  text-wrap: balance;
+}
+
+.close__body {
+  margin: 0 0 clamp(2.25rem, 4vw, 3rem);
+  max-width: 56ch;
+  font-size: 0.98rem;
+  line-height: 1.75;
+  color: #cfcec6;
+}
+
+.close__links {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.75rem 2.25rem;
+  font-size: 0.8rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.close__links a {
+  text-decoration: none;
+  color: #e8e7df;
+  border-bottom: 1px solid transparent;
+  padding-bottom: 0.2em;
+  transition: border-color 160ms ease, color 160ms ease;
+}
+.close__links a:hover { color: #fff; border-bottom-color: #fff; }
+
+.close__primary {
+  font-size: 1.15rem;
+  letter-spacing: 0.04em;
+  text-transform: none;
+  color: var(--paper);
+  border-bottom: 1px solid var(--paper) !important;
+}
+
+/* ==========================================================================
+   Footer
+   ========================================================================== */
+
+.foot {
+  position: relative;
+  z-index: 1;
+  padding: 2rem var(--pad) 2.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 0.75rem 2rem;
+  font-size: 0.72rem;
+  line-height: 1.6;
+  letter-spacing: 0.06em;
+  color: var(--ink-faint);
+  border-top: 1px solid var(--rule);
+}
+.foot p { margin: 0; }
+.foot__note { max-width: 46ch; }/* ==========================================================================
+   Responsive: the sheet becomes a stack below ~900px
+   ========================================================================== */
+
+@media (max-width: 1120px) {
+  .reg__row { width: 94%; }
+}
+
+@media (max-width: 900px) {
+  /* The measured frame is a desktop composition; on narrow screens the
+     same content reflows to reading order rather than shrinking to fit. */
+  .sheet {
+    aspect-ratio: auto;
+    display: grid;
+    gap: 1.6rem;
+    padding: clamp(1.5rem, 5vw, 2.5rem) var(--pad) 2.5rem;
+    font-size: 15px;
+  }
+  .sheet > * { position: static; }
+
+  /* The masthead holds the portrait beside the name so it costs one row, not
+     two, and the stamp sits under the name where it still reads at thumb size. */
+  .masthead {
+    position: static;
+    width: auto;
+    height: auto;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    grid-template-areas:
+      "portrait name"
+      ".        stamp";
+    align-items: center;
+    column-gap: 0.9rem;
+    row-gap: 0.7rem;
+    margin-bottom: 0.6rem;
+  }
+
+  .portrait {
+    grid-area: portrait;
+    width: 3.1rem;
+    height: 3.1rem;
+  }
+
+  .name {
+    grid-area: name;
+    width: auto;
+    font-size: 0.78rem;
+    line-height: 1.45;
+    white-space: normal;
+    letter-spacing: 0.18em;
+  }
+
+  .stamp {
+    grid-area: stamp;
+    justify-self: start;
+    margin: 0;
+    padding: 0.3em 0.55em 0.26em;
+    font-size: 0.92rem;
+    letter-spacing: 0.09em;
+    transform: rotate(-2deg);
+  }
+
+  .lead { width: auto; height: auto; margin-top: 0.9rem; }
+
+  .lead__fig {
+    position: static;
+    font-size: clamp(4.4rem, 19vw, 8rem);
+    white-space: normal;
+  }
+
+  .lead__cap {
+    position: static;
+    width: auto;
+    text-align: left;
+    font-size: 0.86rem;
+    margin-top: 1rem;
+    letter-spacing: 0.1em;
+  }
+  .lead__cap span:last-child { font-size: 0.82rem; }
+
+  .stats {
+    width: auto;
+    grid-auto-rows: auto;
+    border-left: 0;
+    padding-left: 0;
+    border-top: 1px solid var(--ink);
+    padding-top: 1.2rem;
+    gap: 1.1rem;
+    margin-top: 1.5rem;
+  }
+
+  .stat {
+    display: grid;
+    grid-template-columns: 7.5rem 1fr;
+    align-items: baseline;
+    padding-bottom: 1rem;
+  }
+  .stat__fig { font-size: 2.9rem; }
+  .stat__label { margin-top: 0; font-size: 0.78rem; }
+
+  .reg__title { margin-top: 1rem; font-size: 0.78rem; }
+
+  .reg {
+    position: static;
+    display: grid;
+    gap: 0;
+    width: auto;
+    border-top: 1px solid var(--rule);
+  }
+
+  .reg__row {
+    position: static;
+    width: auto;
+    grid-template-columns: 1fr auto;
+    grid-template-areas:
+      "org date"
+      "role role";
+    gap: 0.35rem 1rem;
+    padding-block: 0.85rem;
+    border-bottom: 1px solid var(--rule);
+    font-size: 0.86rem;
+  }
+  .reg__row:first-child { border-top: 0; }
+  .reg__org { grid-area: org; }
+  .reg__role { grid-area: role; font-size: 0.95rem; }
+  .reg__date { grid-area: date; }
+  .reg__dots { display: none; }
+
+  .notes {
+    position: static;
+    width: auto;
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+    font-size: 0.8rem;
+  }
+
+  .contact {
+    position: static;
+    width: auto;
+    text-align: left;
+    font-size: 0.9rem;
+    border-top: 1px solid var(--ink);
+    padding-top: 1.1rem;
+  }
+
+  .lead .fn, .stat .fn { font-size: 0.4em; }
+}
+
+@media (max-width: 720px) {
+  .entry {
+    grid-template-columns: 1fr;
+    row-gap: 0.85rem;
+  }
+  .entry > *:not(.entry__date) { grid-column: 1; }
+  .entry__date { grid-column: 1; grid-row: auto; padding-top: 0; }
+  .entry__title { font-size: 1.9rem; }
+  .entry__at { font-size: 0.68rem; }
+  .projects { grid-template-columns: 1fr; }
+  .project { padding-right: 0 !important; }
+  .foot { flex-direction: column; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}

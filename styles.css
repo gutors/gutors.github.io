@@ -215,7 +215,10 @@ a { color: inherit; }
 
 .lead__cap {
   position: absolute;
-  right: 0;
+  /* Stops short of the rule. Without this offset the caption's right edge
+     lands exactly on the vertical rule at 67.2%, which reads as text touching
+     a line rather than a column with air beside it. */
+  right: 3%;
   bottom: 0.35em;
   width: 37%;
   display: block;

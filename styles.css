@@ -105,6 +105,52 @@ a { color: inherit; }
 .skip:focus { left: 0; }
 
 /* ==========================================================================
+   Language switch
+   A page-level control, not part of the sheet: the measured card is a printed
+   object, and a UI control sitting inside it would be the browser talking
+   through the report. It sits above the sheet, quiet, and reads as chrome.
+   ========================================================================== */
+
+.langbar {
+  max-width: 1280px;
+  margin-inline: auto;
+  padding: clamp(0.85rem, 1.8vw, 1.25rem) clamp(1.1rem, 2.6vw, 1.9rem) 0;
+  display: flex;
+  justify-content: flex-end;
+  align-items: baseline;
+  gap: 0.55em;
+  font-size: 0.7rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.langbar a,
+.langbar [aria-current] {
+  text-decoration: none;
+  padding-bottom: 0.2em;
+  border-bottom: 1px solid transparent;
+  transition: color 140ms ease, border-color 140ms ease;
+}
+
+.langbar [aria-current] {
+  color: var(--ink);
+  border-bottom-color: var(--ink);
+}
+
+.langbar a {
+  color: var(--ink-faint);
+}
+.langbar a:hover {
+  color: var(--blue);
+  border-bottom-color: var(--blue);
+}
+
+.langbar__sep {
+  color: var(--rule);
+  user-select: none;
+}
+
+/* ==========================================================================
    First viewport — bound to the approved comp's measured boxes (1280 × 720)
    ========================================================================== */
 
